@@ -17,7 +17,7 @@ author: true
 name: '名字'
 NickName: '昵称'
 webtitle: '网站标题??'
-bio: 'your awesome bio'
+bio: '简介'
 about: true
 aboutyou: '自我介绍'
 portraits: '/assets/profile.jpg' # your portraits image file path
