@@ -20,7 +20,7 @@ webtitle: '网站标题??'
 bio: 'your awesome bio'
 about: true
 aboutyou: '自我介绍'
-portraits: '/assets/profile.jpeg' # your portraits image file path
+portraits: '/assets/profile.jpg' # your portraits image file path
 
 # SNS
 SNS: true
