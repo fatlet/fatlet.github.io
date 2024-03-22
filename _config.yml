@@ -1,25 +1,25 @@
 # Site settings 配置站点
-title: '页面标题'
-description: '网站描述'
-keywords: '网站关键字'
+title: '真真'
+description: ''
+keywords: ''
 url: 'https://fatlet.github.io' # your host
 
 # nav 中文字符空格：&emsp;
 nav: # 最佳体验 六个标签 且最好每个标签不超过4中文字
-  首页: '/'
-  标签: '/tags.html'
-  时间线: '/timeline.html'
-  关于博主: '/about.html'
-  友情链接: '/friendLink.html'
+  # 首页: '/'
+  # 标签: '/tags.html'
+  # 时间线: '/timeline.html'
+  # 关于博主: '/about.html'
+  # 友情链接: '/friendLink.html'
 
 # 博主
 author: true
-name: '名字'
-NickName: '昵称'
+name: '真真'
+NickName: 'JaeJae'
 webtitle: 'little fatty'
-bio: '简介'
+bio: ''
 about: true
-aboutyou: '自我介绍'
+aboutyou: ''
 portraits: '/assets/profile.jpg' # your portraits image file path
 
 # SNS
