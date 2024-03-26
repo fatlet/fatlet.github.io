@@ -26,7 +26,7 @@ function initPlayer() {
 
   document.getElementById("play").addEventListener("click", function () {
     audio.play();
-    // TODO 展示暂停播放图标
+    // TODO show pause icon
   });
 
   document.getElementById("prev").addEventListener("click", function () {
@@ -45,7 +45,13 @@ function initPlayer() {
   });
 
   document.getElementById("bar").addEventListener("click", function (e) {
-    console.log("bar", e.offsetX, e.target.clientWidth);
+    const percent = ((e.offsetX / e.target.clientWidth) * 100).toFixed(2);
+    console.log(Number((audio.duration * percent * 0.01).toFixed(0)));
+    audio.currentTime = Number((audio.duration * percent * 0.01).toFixed(0));
+    if (isPlay) {
+      audio.play();
+      // TODO show pause icon
+    }
   });
 }
 
@@ -56,7 +62,7 @@ function setAudioInfo() {
   audio.addEventListener("canplay", function () {
     if (isPlay) {
       audio.play();
-      // TODO 展示暂停播放图标
+      // TODO show pause icon
     }
     const duration = sec2time(audio.duration);
 
@@ -81,7 +87,7 @@ function setAudioInfo() {
 }
 
 function sec2time(oriDuration) {
-  const durationMM = Number((oriDuration / 60).toFixed(0));
+  const durationMM = Math.floor(oriDuration / 60);
   const durationSS = Number((oriDuration - durationMM * 60).toFixed(0));
   const duration = `${durationMM < 10 ? "0" + durationMM : durationMM}:${
     durationSS < 10 ? "0" + durationSS : durationSS
