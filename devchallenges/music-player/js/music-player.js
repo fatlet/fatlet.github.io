@@ -79,7 +79,7 @@ function setAudioInfo() {
       if (currentTime != document.getElementsByClassName("time")[0].innerHTML) {
         document.getElementsByClassName("time")[0].innerHTML = currentTime;
         const percent =
-          ((audio.currentTime / audio.duration) * 100).toFixed(2) + "%";
+          Math.ceil((audio.currentTime / audio.duration) * 100) + "%";
         document.getElementById("bar").style.setProperty("--width", percent);
       }
     });
