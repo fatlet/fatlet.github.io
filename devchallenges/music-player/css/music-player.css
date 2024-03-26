@@ -88,7 +88,7 @@ body {
   overflow: hidden;
   width: var(--width);
   height: 100%;
-  transition: width 1s linear;
+  /* transition: width 1s linear; */
 }
 
 .music-player .btns {
