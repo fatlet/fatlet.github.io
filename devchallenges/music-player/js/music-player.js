@@ -4,13 +4,13 @@ const musicPlayList = [
   {
     name: "Lost in the City Lights",
     author: "Cosmo Sheldrake",
-    cover: "../images/cover-1.png",
+    cover: "./images/cover-1.png",
     source: "./assets/lost-in-city-lights-145038.mp3",
   },
   {
     name: "Forest Lullaby",
     author: "Lesfm",
-    cover: "../images/cover-2.png",
+    cover: "./images/cover-2.png",
     source: "./assets/forest-lullaby-110624.mp3",
   },
 ];
