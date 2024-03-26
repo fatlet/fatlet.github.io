@@ -1,0 +1,91 @@
+window.onload = initPlayer;
+
+const musicPlayList = [
+  {
+    name: "Lost in the City Lights",
+    author: "Cosmo Sheldrake",
+    cover: "../images/cover-1.png",
+    source: "./assets/lost-in-city-lights-145038.mp3",
+  },
+  {
+    name: "Forest Lullaby",
+    author: "Lesfm",
+    cover: "../images/cover-2.png",
+    source: "./assets/forest-lullaby-110624.mp3",
+  },
+];
+
+let musicIndex = 0;
+let audio = null;
+let isPlay = false;
+
+function initPlayer() {
+  console.log("initPlayer");
+
+  setAudioInfo();
+
+  document.getElementById("play").addEventListener("click", function () {
+    audio.play();
+    // TODO 展示暂停播放图标
+  });
+
+  document.getElementById("prev").addEventListener("click", function () {
+    isPlay = true;
+    musicIndex = musicIndex - 1;
+    if (musicIndex < 0) musicIndex = 0;
+    setAudioInfo();
+  });
+
+  document.getElementById("next").addEventListener("click", function () {
+    console.log("next");
+    isPlay = true;
+    musicIndex = musicIndex + 1;
+    if (musicIndex > musicPlayList.length - 1) musicIndex = 0;
+    setAudioInfo();
+  });
+
+  document.getElementById("bar").addEventListener("click", function (e) {
+    console.log("bar", e.offsetX, e.target.clientWidth);
+  });
+}
+
+function setAudioInfo() {
+  const { name, author, cover, source } = musicPlayList[musicIndex];
+
+  audio = new Audio(source);
+  audio.addEventListener("canplay", function () {
+    if (isPlay) {
+      audio.play();
+      // TODO 展示暂停播放图标
+    }
+    const duration = sec2time(audio.duration);
+
+    document.getElementsByClassName(
+      "cover",
+    )[0].style.backgroundImage = `url('${cover}')`;
+
+    document.getElementsByClassName("name")[0].innerText = name;
+    document.getElementsByClassName("author")[0].innerText = author;
+    document.getElementsByClassName("time")[1].innerHTML = duration;
+
+    audio.addEventListener("timeupdate", function () {
+      const currentTime = sec2time(audio.currentTime);
+      if (currentTime != document.getElementsByClassName("time")[0].innerHTML) {
+        document.getElementsByClassName("time")[0].innerHTML = currentTime;
+        const percent =
+          ((audio.currentTime / audio.duration) * 100).toFixed(2) + "%";
+        document.getElementById("bar").style.setProperty("--width", percent);
+      }
+    });
+  });
+}
+
+function sec2time(oriDuration) {
+  const durationMM = Number((oriDuration / 60).toFixed(0));
+  const durationSS = Number((oriDuration - durationMM * 60).toFixed(0));
+  const duration = `${durationMM < 10 ? "0" + durationMM : durationMM}:${
+    durationSS < 10 ? "0" + durationSS : durationSS
+  }`;
+
+  return duration;
+}
